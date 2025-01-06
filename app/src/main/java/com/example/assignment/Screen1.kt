@@ -20,17 +20,17 @@ import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 
 @Composable
-fun Screen1(navController: NavController) {
-    var buttonText by rememberSaveable { mutableStateOf<List<String>>(listOf()) }
-    var value = 1100
+fun Screen1(navController: NavController,screen1ViewModel: Screen1ViewModel = Screen1ViewModel()){
+    val buttonText by rememberSaveable { mutableStateOf<List<String>>(listOf()) }
 
     LazyColumn {
         items(buttonText) {
             Text(
-                text = it.toString(),
+                text = it,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(0.dp),
@@ -52,17 +52,7 @@ fun Screen1(navController: NavController) {
                 Text(text = "3")
             }
             Spacer(modifier = Modifier.width(110.dp))
-            Button(onClick = {
-                val list = buttonText.toMutableList()
-                value -= 100
-                val a = if (value % 200 == 0) {
-                    value.toString()
-                } else {
-                    "-".plus(value.toString())
-                }
-                list.add(a)
-                buttonText = list
-
+            Button(onClick = { screen1ViewModel.event()
             }) {
                 Text(text = "Button")
             }

@@ -21,10 +21,11 @@ import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 
 @Composable
-fun Screen2(navController: NavController) {
+fun Screen2(navController: NavController){
     var series by rememberSaveable { mutableStateOf<List<Int>>(listOf()) }
     var cur = 0
     var next = 1
@@ -61,9 +62,9 @@ fun Screen2(navController: NavController) {
                 val sum = cur + next
                 cur = next
                 next = sum
+
                 list.add(cur)
                 series = list
-
             }) {
                 Text(text = "Button")
             }

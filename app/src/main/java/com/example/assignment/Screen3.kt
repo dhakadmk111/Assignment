@@ -30,6 +30,8 @@ fun Screen3(navController: NavController) {
     var char2 = 'a'
     var char3 = 'a'
     var char4 = 'b'
+    var char5 = 'c'
+    var char6 = 'd'
 
     LazyVerticalGrid(
         columns = GridCells.Adaptive(60.dp),
@@ -75,8 +77,13 @@ fun Screen3(navController: NavController) {
                 else if(char3 <= 'z'){
                     list.add(char4.plus(char3.toString()))
                     char3 = char3.inc()
-                }else{
-                    char4.inc()
+                }
+                else if (char4 <= 'z' ){
+                    list.add(char5.plus(char4.toString()))
+                    char4 = char4.inc()
+                }else if(char5 <= 'z'){
+                    list.add(char6.plus(char5.toString()))
+                    char3 = char5.inc()
                 }
                 alphabet = list
             }) {
