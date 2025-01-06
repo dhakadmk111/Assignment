@@ -83,7 +83,7 @@ fun Screen3(navController: NavController) {
                     char4 = char4.inc()
                 }else if(char5 <= 'z'){
                     list.add(char6.plus(char5.toString()))
-                    char3 = char5.inc()
+                    char5 = char5.inc()
                 }
                 alphabet = list
             }) {
